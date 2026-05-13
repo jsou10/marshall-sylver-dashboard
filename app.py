@@ -51,7 +51,7 @@ CACHE_TIME_FILE = "/tmp/marshall_sylver_cache_time.txt"
 # Track API errors for dashboard display
 _api_errors = []
 
-BUILD_TIMEOUT = 480  # 8 min max
+BUILD_TIMEOUT = int(os.environ.get("BUILD_TIMEOUT", "900"))  # 15 min default, overridable via env var
 _build_lock = threading.Lock()
 
 def _save_cache_to_disk(html):
